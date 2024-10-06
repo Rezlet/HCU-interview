@@ -55,6 +55,7 @@ Users can filter the task list to show "All", "Completed", or "Incomplete" tasks
 The application uses Mock Service Worker (MSW) to simulate the following API endpoints:
 
 **GET** /tasks: Returns the current list of tasks.
+
 **POST** /tasks: Adds a new task to the list.
 
 ## Linting and Formatting 
