@@ -1,11 +1,31 @@
-# Getting Started with Create React App
+# Task Management App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A task management application built with React, TypeScript, and Material UI. This application allows users to manage their tasks with features like adding, filtering, and pagination.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Linting and Formatting](#linting-and-formatting)
+- [Running Tests](#running-tests)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Installation
+
+To get started with this project, you need to have Node.js and npm (or Yarn) installed on your machine.
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/Rezlet/HCU-interview
+   cd HCU-interview
+   
 ## Available Scripts
 
-In the project directory, you can run:
-
+In the project directory, you can run step by step:
+### `npm install`
+It will be get All package to run project 
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -19,28 +39,16 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `npm run lint`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Runs the linter to check for code quality issues. This command will analyze your code for potential errors and enforce coding standards, helping to maintain code quality.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run lint`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Formats the code using Prettier. This command will automatically format your code according to the project's defined style rules, ensuring consistency across your codebase.
 
-### `npm run eject`
+### Notes
+- Ensure you have the necessary linting and formatting configurations set up in your project (e.g., ESLint and Prettier).
+- You might want to adjust the descriptions or add any additional commands that are relevant to your project.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Let me know if you need further modifications or additions!

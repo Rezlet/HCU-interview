@@ -22,7 +22,12 @@ const TaskGrid: React.FC<TaskGridProps> = ({
       headerName: 'Completed',
       width: 120,
       renderCell: (params) => (
-        <Checkbox checked={params.value} color="primary" data-testid={params.row.id}  aria-label={`Task ${params.row.title} completed`}/>
+        <Checkbox
+          checked={params.value}
+          color="primary"
+          data-testid={params.row.id}
+          aria-label={`Task ${params.row.title} completed`}
+        />
       ),
     },
   ];

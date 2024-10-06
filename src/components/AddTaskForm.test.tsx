@@ -1,6 +1,7 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import AddTaskForm from './AddTaskForm';
-import {act} from 'react'
+import { act } from 'react';
 let taskTitle: string;
 let setTaskTitle: jest.Mock;
 let handleAddTask: jest.Mock;
@@ -10,20 +11,20 @@ beforeEach(() => {
   setTaskTitle = jest.fn((title) => {
     taskTitle = title;
   });
-  handleAddTask = jest.fn(); 
+  handleAddTask = jest.fn();
 });
 
-test('renders AddTaskForm',async () => {
+test('renders AddTaskForm', async () => {
   await act(async () => {
     render(
       <AddTaskForm
         taskTitle={taskTitle}
         setTaskTitle={setTaskTitle}
         handleAddTask={handleAddTask}
-      />
+      />,
     );
   });
-  
+
   expect(screen.getByLabelText(/new task/i)).toBeInTheDocument();
   expect(screen.getByRole('button', { name: /add task/i })).toBeInTheDocument();
 });
@@ -31,9 +32,9 @@ test('renders AddTaskForm',async () => {
 test('updates input value when changed', async () => {
   let taskTitle: string = '';
   const setTaskTitle = jest.fn((title: string) => {
-    taskTitle = title; 
+    taskTitle = title;
   });
-  const handleAddTask = jest.fn(); // Mock function
+  const handleAddTask = jest.fn();
 
   await act(async () => {
     render(
@@ -41,7 +42,7 @@ test('updates input value when changed', async () => {
         taskTitle={taskTitle}
         setTaskTitle={setTaskTitle}
         handleAddTask={handleAddTask}
-      />
+      />,
     );
   });
 
@@ -52,12 +53,18 @@ test('updates input value when changed', async () => {
   });
 
   expect(setTaskTitle).toHaveBeenCalledWith('New Task');
-  expect(taskTitle).toBe('New Task'); 
+  expect(taskTitle).toBe('New Task');
 });
 
 test('shows an error message when the title is empty', async () => {
   await act(async () => {
-    render(<AddTaskForm taskTitle={taskTitle} setTaskTitle={setTaskTitle} handleAddTask={handleAddTask} />);
+    render(
+      <AddTaskForm
+        taskTitle={taskTitle}
+        setTaskTitle={setTaskTitle}
+        handleAddTask={handleAddTask}
+      />,
+    );
   });
 
   await act(async () => {
@@ -67,41 +74,37 @@ test('shows an error message when the title is empty', async () => {
   expect(screen.getByText(/task title cannot be empty/i)).toBeInTheDocument();
 });
 
-
 test('calls handleAddTask and sets error to null when a valid title is submitted', async () => {
   let taskTitle = 'ahhaha';
   const setTaskTitle = jest.fn((title: string) => {
-    taskTitle = title; // Update the local variable
+    taskTitle = title;
   });
-  const handleAddTask = jest.fn(); // Mock function for handleAddTask
+  const handleAddTask = jest.fn();
 
-  // Render the component
   await act(async () => {
     render(
       <AddTaskForm
         taskTitle={taskTitle}
         setTaskTitle={setTaskTitle}
         handleAddTask={handleAddTask}
-      />
+      />,
     );
   });
 
   const input = screen.getByLabelText(/new task/i);
   const button = screen.getByRole('button', { name: /add task/i });
 
-  // Simulate typing a valid task title
   await act(async () => {
     fireEvent.change(input, { target: { value: 'New Task' } });
   });
 
-  // Simulate clicking the add task button
   await act(async () => {
     fireEvent.click(button);
   });
 
-  // Assert that the handleAddTask function has been called
   expect(handleAddTask).toHaveBeenCalled();
-  
-  // Optionally, if you want to check the error state, you can directly test it from the component
-  expect(screen.queryByText(/task title cannot be empty/i)).not.toBeInTheDocument();
+
+  expect(
+    screen.queryByText(/task title cannot be empty/i),
+  ).not.toBeInTheDocument();
 });

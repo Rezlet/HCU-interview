@@ -22,17 +22,25 @@ const TaskFilter: React.FC<TaskFilterProps> = ({ filter, setFilter }) => {
   return (
     <FormControl style={{ width: '50vw' }}>
       <InputLabel>Status</InputLabel>
-      <Select  labelId="task-filter-label" 
+      <Select
+        labelId="task-filter-label"
         value={filter}
         label="Status"
         data-testid="select-box"
         onChange={handleFilterChange}
         inputProps={{
           'aria-labelledby': 'task-filter-label',
-        }}>
-        <MenuItem data-testid="select-all" value={'all'}>All</MenuItem>
-        <MenuItem data-testid="select-completed" value={'completed'}>Completed</MenuItem>
-        <MenuItem data-testid="select-incomplete" value={'incomplete'}>Incomplete</MenuItem>
+        }}
+      >
+        <MenuItem data-testid="select-all" value={'all'}>
+          All
+        </MenuItem>
+        <MenuItem data-testid="select-completed" value={'completed'}>
+          Completed
+        </MenuItem>
+        <MenuItem data-testid="select-incomplete" value={'incomplete'}>
+          Incomplete
+        </MenuItem>
       </Select>
     </FormControl>
   );

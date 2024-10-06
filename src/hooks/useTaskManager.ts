@@ -1,20 +1,29 @@
-// hooks/useTaskManager.ts
 import { useEffect, useState } from 'react';
 import { GridPaginationModel } from '@mui/x-data-grid';
 import { TaskResponse } from '../api/task';
 import { addTask, fetchTasks } from '../service/taskService';
 
 const useTaskManager = () => {
-  const [tasksResponse, setTasksResponse] = useState<TaskResponse | undefined>();
-  const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({ pageSize: 5, page: 0 });
-  const [filter, setFilter] = useState<'all' | 'completed' | 'incomplete'>('all');
+  const [tasksResponse, setTasksResponse] = useState<
+    TaskResponse | undefined
+  >();
+  const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
+    pageSize: 5,
+    page: 0,
+  });
+  const [filter, setFilter] = useState<'all' | 'completed' | 'incomplete'>(
+    'all',
+  );
   const [taskTitle, setTaskTitle] = useState<string>('');
 
   useEffect(() => {
     handleFetchTasks(paginationModel, filter);
   }, [paginationModel, filter]);
 
-  const handleFetchTasks = async (newPaginationModel: GridPaginationModel, filter: string) => {
+  const handleFetchTasks = async (
+    newPaginationModel: GridPaginationModel,
+    filter: string,
+  ) => {
     const response = await fetchTasks(newPaginationModel, filter);
     setTasksResponse(response);
   };
@@ -33,16 +42,18 @@ const useTaskManager = () => {
     localStorage.setItem('manualTasks', JSON.stringify(updatedTasks));
 
     setTaskTitle('');
-    handleFetchTasks(paginationModel, filter); // Re-fetch tasks after adding
+    handleFetchTasks(paginationModel, filter);
   };
 
   const handlePaginationChange = (newPaginationModel: GridPaginationModel) => {
     setPaginationModel(newPaginationModel);
   };
 
-  const handleFilterChange = (newFilter: 'all' | 'completed' | 'incomplete') => {
+  const handleFilterChange = (
+    newFilter: 'all' | 'completed' | 'incomplete',
+  ) => {
     setFilter(newFilter);
-    setPaginationModel((prev) => ({ ...prev, page: 0 })); // Reset page to 0
+    setPaginationModel((prev) => ({ ...prev, page: 0 })); 
   };
 
   return {
