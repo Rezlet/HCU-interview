@@ -35,12 +35,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-## Features
-# Task Management App
+### Task Management App
 **Description:**
 The Task Management App allows users to create, view, and filter tasks easily. This application is built with React and uses a mock API to manage task data.
 
-# Features
+### Features
 **1. Create Task**
 Users can add new tasks through a form with a text input and an "Add Task" button. Once a task is created, it will immediately appear in the task list.
 
@@ -52,7 +51,7 @@ Upon loading the application, it fetches the task list from the mock API and dis
 **3. Filter Tasks**
 Users can filter the task list to show "All", "Completed", or "Incomplete" tasks. The task list will automatically update based on the selected filter.
 
-# Mock API
+### Mock API
 The application uses Mock Service Worker (MSW) to simulate the following API endpoints:
 
 **GET** /tasks: Returns the current list of tasks.
